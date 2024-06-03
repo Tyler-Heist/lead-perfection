@@ -1,0 +1,11 @@
+{
+    "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ODY5ZDVkZi1hMjBkLTQ2YTUtOTI3OS1mZjU2NGRkMDc3YmEiLCJVc2VybmFtZSI6IjN0ZFdGMFZLY1BEd0NwWHZCd084SmxZTWV6TERjbXh0V21IaTZuNmxqQzRoNThMdjF3V1RFaGxaTVd4SW40ZDgiLCJQYXNzd29yZCI6IkgwRzRkbklqY1BRbXpkLyt5UmFWbjBEdEZnTHFsaGRBQm9aSlhueEFuYzNFbkt5Y3gwSm1sVEVCN29Qa0VFczkiLCJVc2VySUQiOiI2MDAiLCJjbGllbnRJRCI6ImRlbW8zIiwiU2VlZCI6IjIiLCJhcHBrZXkiOiI0RTQwNUM0Ri02RUFBLTRBN0YtQTBBRS01Qjk1NUIxRkQyRjEiLCJleHAiOjE3MTczMjkxMzksImlzcyI6Imh0dHA6Ly9hcGl0ZXN0LmxlYWRwZXJmZWN0aW9uLmNvbSIsImF1ZCI6Imh0dHA6Ly9hcGl0ZXN0LmxlYWRwZXJmZWN0aW9uLmNvbSJ9.HXWnIG2ZctDSpjszgqKXbJT0ULy0qBd2j74IbdaR5K4",
+    "token_type": "bearer",
+    "expires_in": 600,
+    ".issued": "2024-06-02T04:42:19",
+    ".expires": "2024-06-02T04:52:19",
+    "refresh_token": "Ta00DRbT/lsPe78N37zhYZTWzecMv4ZKuoM0Ze/fWRMs0dlXL2qs03YbUNdQN6JuMH7GzMNNI2HzjkydWxuTVw==",
+    "refresh_token_expires_in": 7200,
+    "refresh_token_issued": "2024-06-02T04:42:19",
+    "refresh_token_expires": "2024-06-02T06:42:19"
+}
