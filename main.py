@@ -6,7 +6,7 @@ import json
     return f"access_token: Expected type 'str', got '{str(type(self.access_token))[8:-2]}' instead"""
 
 LP = importlib.import_module('lead-perfection.client')
-CT = importlib.import_module('lead-perfection.customers')
+lead = importlib.import_module('lead-perfection.leads')
 
 client = LP.Client('apitest', 'demo3', 'demo3api', 'LP3api123!', '4E405C4F-6EAA-4A7F-A0AE-5B955B1FD2F1')
 auth_data = client.authenticate()
@@ -19,8 +19,8 @@ print(access_token)
 # with open('auth_data.json', 'w') as outfile:
 #     outfile.write(json.dumps(auth_data, indent=4))
 
-leads = CT.Leads(server_id='apitest', access_token=access_token)
-result = leads.update_customer(prospect_id=4537, first_name='Will', last_name='Smithers', phone='7044344628')
+leads = lead.Leads(server_id='apitest', access_token=access_token)
+result = leads.get_spectrum_results(s_date='05/01/2019', e_date='05/03/2024')
 print(result)
 
 
