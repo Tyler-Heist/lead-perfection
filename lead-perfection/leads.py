@@ -12,11 +12,7 @@ def get_leads_settings():
 class Leads(object):
     def __init__(self, access_token, server_id):
         self.server_id = server_id
-        self.headers = {
-            'Authorization': f'Bearer {access_token}',
-            'accept': '*/*',
-            'Content-Type': 'application/x-www-form-urlencoded'
-        }
+        self.headers = utils.headers(access_token=access_token)
 
     def get_inbound_lead_info(
             self,

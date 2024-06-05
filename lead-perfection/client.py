@@ -2,20 +2,20 @@ from . import utils
 
 
 class Client(object):
-    def __init__(self, serverid, clientid, username, password, appkey):
-        self.serverid = serverid
-        self.clientid = clientid
+    def __init__(self, server_id, client_id, username, password, app_key):
+        self.server_id = server_id
+        self.client_id = client_id
         self.username = username
         self.password = password
-        self.appkey = appkey
+        self.app_key = app_key
 
     def get_credentials(self):
         return {
-            'serverid': self.serverid,
-            'clientid': self.clientid,
+            'serverid': self.server_id,
+            'clientid': self.client_id,
             'username': self.username,
             'password': self.password,
-            'appkey':   self.appkey
+            'appkey':   self.app_key
         }
 
     def update_credentials(self, **kwargs):
@@ -28,11 +28,11 @@ class Client(object):
             'grant_type': 'password',
             'username': self.username,
             'password': self.password,
-            'clientid': self.clientid,
-            'appkey': self.appkey
+            'clientid': self.client_id,
+            'appkey': self.app_key
         }
 
-        url = f'https://{self.serverid}.leadperfection.com/token'
+        url = f'https://{self.server_id}.leadperfection.com/token'
 
         headers = {
             'accept': '*/*',
@@ -40,7 +40,7 @@ class Client(object):
         }
 
         try:
-            response_data = utils.make_request(url=url, data=data, headers=headers)
+            response_data = utils.make_request(url=url, data=data, request_headers=headers)
             return response_data
         except (utils.ConnectionError, utils.Timeout, utils.HTTPError, utils.RequestException,
                 utils.json.JSONDecodeError) as e:
