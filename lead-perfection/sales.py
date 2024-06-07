@@ -34,7 +34,7 @@ class Sales(object):
             self,
             job_id: int = None,
             sales_rep_id: int = None,
-            commission_pay_amt: int = None,
+            commission_pay_amt: float = None,
             commission_type: int = None,
             comments: str = None
     ):
@@ -52,7 +52,7 @@ class Sales(object):
             self,
             job_id: int = None,
             payment_date: str = None,
-            payment_amt: int = None,
+            payment_amt: float = None,
             payment_type_id: str = None,
             payment_method_id: str = None,
             payment_notes: str = None,
@@ -72,18 +72,60 @@ class Sales(object):
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddSalesJobPayment'
         return utils.make_request(url, data, self.headers)
 
-    def add_sales_job_cost(self):
-        data = {}
+    def add_sales_job_cost(
+            self,
+            job_id: int = None,
+            mat_id: str = None,
+            qty: int = None,
+            cost: float = None,
+            price: float = None,
+            comm_flag: bool = False,
+            override_flag: bool = False,
+            invoice_date: str = None,
+            invoice_number: str = None,
+            comments: str = None,
+            entered_by: int = None,
+            est_qty: int = None,
+            est_cost: float = None
+    ):
+        data = {
+            'job_id': job_id,
+            'mat_id': mat_id,
+            'qty': qty,
+            'cost': cost,
+            'price': price,
+            'commFlag': comm_flag,
+            'overrideFlag': override_flag,
+            'invoiceDate': invoice_date,
+            'invoiceNumber': invoice_number,
+            'comments': comments,
+            'enteredBy': entered_by,
+            'estQty': est_qty,
+            'estCost': est_cost,
+        }
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddSalesJobCost'
         return utils.make_request(url, data, self.headers)
 
-    def add_salesman_images(self):
-        data = {}
+    def add_salesman_images(
+            self,
+            ils_id: int = None,
+            file_name: str = None,
+            doc_descr: str = None,
+            doc_type_id: int = None,  # use /api/SalesApi/GetSalesApptDispProd with type=y to enumerate possible values
+            file_bytes: list = None
+    ):
+        data = {
+            'ilsid': ils_id,
+            'filename': file_name,
+            'docdescr': doc_descr,
+            'dtyid': doc_type_id,
+            'filebytes': file_bytes
+        }
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddSalesmanImages'
         return utils.make_request(url, data, self.headers)
 
-    def get_links(self):
-        data = {}
+    def get_links(self, rec_type: str = None, rec_id: int = None):
+        data = {'rectype': rec_type, 'recid': rec_id}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetLinks'
         return utils.make_request(url, data, self.headers)
 
