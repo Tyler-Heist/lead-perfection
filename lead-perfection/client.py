@@ -40,7 +40,7 @@ class Client(object):
         }
 
         try:
-            response_data = utils.make_request(url=url, data=data, request_headers=headers)
+            response_data = utils.make_post_request(url=url, data=data, request_headers=headers)
             return response_data
         except (utils.ConnectionError, utils.Timeout, utils.HTTPError, utils.RequestException,
                 utils.json.JSONDecodeError) as e:

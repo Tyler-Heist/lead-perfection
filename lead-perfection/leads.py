@@ -32,12 +32,12 @@ class Leads(object):
             'StartIndex': start_index
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetInboundLeadInfo'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_leads_forward_look(self, branch_id: str = None, product_id: str = None, zip_: str = None):
         data = {'branchid': branch_id, 'productid': product_id, 'zip': zip_}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetLeadsForwardLook'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def lead_add(
             self,
@@ -155,7 +155,7 @@ class Leads(object):
             'recdTime': recd_time
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/LeadAdd'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_lead_data(
             self,
@@ -181,12 +181,12 @@ class Leads(object):
             'option5': option5
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetLeadData'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_leads_source_sub_promoter(self, type_: str = 'S'):  # S=SourceSub, P=Promoter, B=Branches, R=Products
         data = {'type': type_}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetLeadsSourceSubPromoter'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def update_leads_perspective_detail(
             self,
@@ -234,17 +234,17 @@ class Leads(object):
             'email': email
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/UpdateLeadsPerspectiveDetail'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def leads_login_message(self, type_: str = 'Leads'):
         data = {'type': type_}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/LeadsLoginMessage'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_leads_confirmed_message(self, type_: str = 'Leads', confirmed_by: int = None):
         data = {'type': type_, 'confirmedby': confirmed_by}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetLeadsConfirmedMessage'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     # Method is intended only for the vendor Spectrum.
     def add_spectrum_lead(
@@ -319,12 +319,10 @@ class Leads(object):
             'ATime': a_time
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/AddSpectrumLead'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     # Method is intended only for the vendor Spectrum.
     def get_spectrum_results(self, s_date: str = None, e_date: str = None):
         data = {'sdate': s_date, 'edate': e_date}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetSpectrumResults'
-        return utils.make_request(url, data, self.headers)
-
-
+        return utils.make_post_request(url, data, self.headers)

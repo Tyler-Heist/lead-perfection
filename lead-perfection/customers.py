@@ -30,17 +30,17 @@ class Customers(object):
             'RecordingURL': recording_url
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/AddCallHistory'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_customers(self, prospect_id: int = None, last_name: str = None):
         data = {'prospectid': prospect_id, 'lastname': last_name}
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetCustomers'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_customers2(self, prospect_id: int = None, job_number: str = None, last_name: str = None, phone: str = None):
         data = {'prospectid': prospect_id, 'jobnumber': job_number, 'lastname': last_name, 'phone': phone}
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetCustomers2'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_customers_by_prospect_id(
             self,
@@ -56,7 +56,7 @@ class Customers(object):
                 'lastname': last_name,
                 'phone': phone}
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetCustomersByProspectID'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_lead(
         self,
@@ -82,7 +82,7 @@ class Customers(object):
             'SortOrder': sort_order
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetLead'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_job_status_changes(
         self,
@@ -110,12 +110,12 @@ class Customers(object):
             'SortOrder': sort_order
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetJobStatusChanges'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_lead_info(self, prospect_id: int = None, job_number: str = None, last_name: str = None, phone: str = None):
         data = {'prospectid': prospect_id, 'jobnumber': job_number, 'lastname': last_name, 'phone': phone}
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetLeadInfo'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_milestones(
         self,
@@ -145,7 +145,7 @@ class Customers(object):
             'SortOrder': sort_order
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetMilestones'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_prospect_data(
             self,
@@ -171,7 +171,7 @@ class Customers(object):
             'SortOrder': sort_order
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetProspectData'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_sales_appointments(
             self,
@@ -197,7 +197,7 @@ class Customers(object):
             'SortOrder': sort_order
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetSalesAppointments'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def get_service_appointments(
             self,
@@ -223,7 +223,7 @@ class Customers(object):
             'SortOrder': sort_order
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/GetServiceAppointments'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
 
     def update_customer(
             self,
@@ -239,4 +239,4 @@ class Customers(object):
             'phone': phone
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Customers/UpdateCustomer'
-        return utils.make_request(url, data, self.headers)
+        return utils.make_post_request(url, data, self.headers)
