@@ -8,15 +8,15 @@ class Customers(object):
 
     def add_call_history(
             self,
-            cust_id: int = None,
-            emp_id: int = None,
-            call_date: str = None,
-            result_code: int = None,
-            phone: int = None,
-            call_type: str = None,
-            call_queue_id: int = None,
-            duration: str = None,
-            recording_url: str = None
+            cust_id: int,
+            emp_id: int,
+            call_date: str,
+            result_code: int,
+            phone: int,
+            call_type: str,
+            call_queue_id: int,
+            duration: str,
+            recording_url: str
     ):
         data = {
             'CustID': cust_id,
@@ -65,9 +65,9 @@ class Customers(object):
         cst_id: int = None,
         lds_id: int = None,
         ils_id: int = None,
-        page_size: int = None,
-        start_index: int = None,
-        options: int = None,
+        page_size: int = 10,
+        start_index: int = 1,
+        options: int = 0,
         sort_order: int = None
     ):
         data = {
@@ -154,8 +154,8 @@ class Customers(object):
             cst_id: int = None,
             lds_id: int = None,
             ils_id: int = None,
-            page_size: int = None,
-            start_index: int = None,
+            page_size: int = 10,
+            start_index: int = 1,
             options: int = None,
             sort_order: int = None
     ):
@@ -180,8 +180,8 @@ class Customers(object):
             cst_id: int = None,
             lds_id: int = None,
             ils_id: int = None,
-            page_size: int = None,
-            start_index: int = None,
+            page_size: int = 10,
+            start_index: int = 1,
             options: int = None,
             sort_order: int = None
     ):
@@ -206,8 +206,8 @@ class Customers(object):
             cst_id: int = None,
             lds_id: int = None,
             ils_id: int = None,
-            page_size: int = None,
-            start_index: int = None,
+            page_size: int = 10,
+            start_index: int = 1,
             options: int = None,
             sort_order: int = None
     ):

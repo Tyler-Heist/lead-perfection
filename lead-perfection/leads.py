@@ -18,10 +18,10 @@ class Leads(object):
             self,
             start_date: str = None,
             end_date: str = None,
-            pro_id: int = None,
+            pro_id: float = None,
             log_number: str = None,
-            page_size: int = None,
-            start_index: int = None
+            page_size: float = 10,
+            start_index: float = 1
     ):
         data = {
             'startdate': start_date,
@@ -52,28 +52,28 @@ class Leads(object):
             zip_: str = None,
             cross_street: str = None,
             phone: str = None,
-            phone_type: int = None,
+            phone_type: float = None,
             phone2: str = None,
-            phone_type2: int = None,
+            phone_type2: float = None,
             phone3: str = None,
-            phone_type3: int = None,
+            phone_type3: float = None,
             product_id: str = None,
             prooddescr: str = None,
             email: str = None,
             sender: str = None,
             log_number: str = None,
             sent_to: str = None,
-            qnum: int = None,  # currently unused
+            qnum: float = None,  # currently unused
             call_morning: bool = False,
             call_afternoon: bool = False,
             call_evening: bool = False,
             call_weekend: bool = False,
             date_received: str = None,
             source: str = None,
-            srs_id: int = None,
+            srs_id: float = None,
             force_source: bool = True,
             brn_id: str = None,
-            rnk_id: int = None,
+            rnk_id: float = None,
             notes: str = None,
             waiver: bool = False,
             user1: str = None,
@@ -86,12 +86,12 @@ class Leads(object):
             user8: str = None,
             user9: str = None,
             user10: str = None,
-            user11: int = None,
-            user12: int = None,
-            user13: int = None,
-            user14: int = None,
-            user15: int = None,
-            pro_id: int = None,
+            user11: float = None,
+            user12: float = None,
+            user13: float = None,
+            user14: float = None,
+            user15: float = None,
+            pro_id: float = None,
             appt_date: str = None,
             appt_time: str = None,
             recd_date: str = None,
@@ -161,7 +161,7 @@ class Leads(object):
             self,
             start_date: str = None,
             end_date: str = None,
-            ils_id: int = None,
+            ils_id: float = None,
             milestones: str = None,
             option1: str = None,
             option2: str = None,
@@ -198,8 +198,8 @@ class Leads(object):
             address1: str = None,
             city: str = None,
             state: str = None,
-            source_sub_id: int = None,
-            promoter_id: int = None,
+            source_sub_id: float = None,
+            promoter_id: float = None,
             product_id: str = None,
             alt_data1: str = None,
             alt_data2: str = None,
@@ -241,12 +241,12 @@ class Leads(object):
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/LeadsLoginMessage'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_leads_confirmed_message(self, type_: str = 'Leads', confirmed_by: int = None):
+    def get_leads_confirmed_message(self, type_: str = 'Leads', confirmed_by: float = None):
         data = {'type': type_, 'confirmedby': confirmed_by}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetLeadsConfirmedMessage'
         return utils.make_post_request(url, data, self.headers)
 
-    # Method is intended only for the vendor Spectrum.
+    # Method is floatended only for the vendor Spectrum.
     def add_spectrum_lead(
             self,
             first_name: str = None,
@@ -256,11 +256,11 @@ class Leads(object):
             state: str = None,
             zip_: str = None,
             phone: str = None,
-            phone_type: int = None,
+            phone_type: float = None,
             phone2: str = None,
-            phone_type2: int = None,
+            phone_type2: float = None,
             phone3: str = None,
-            phone_type3: int = None,
+            phone_type3: float = None,
             product_id: str = None,
             prooddescr: str = None,
             email: str = None,
@@ -272,14 +272,14 @@ class Leads(object):
             call_evening: bool = False,
             call_weekend: bool = False,
             date_received: str = None,
-            srs_id: int = None,
+            srs_id: float = None,
             notes: str = None,
             force_source: bool = True,
             ad_word: str = None,
             user5: str = None,
             waiver: bool = False,
-            opt_in: int = None,
-            pro_id: int = None,
+            opt_in: float = None,
+            pro_id: float = None,
             a_date: str = None,
             a_time: str = None
     ):
@@ -321,7 +321,7 @@ class Leads(object):
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/AddSpectrumLead'
         return utils.make_post_request(url, data, self.headers)
 
-    # Method is intended only for the vendor Spectrum.
+    # Method is floatended only for the vendor Spectrum.
     def get_spectrum_results(self, s_date: str = None, e_date: str = None):
         data = {'sdate': s_date, 'edate': e_date}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetSpectrumResults'

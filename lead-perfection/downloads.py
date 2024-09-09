@@ -7,9 +7,9 @@ class Downloads(object):
         self.headers = self.headers = utils.headers(access_token=access_token)
 
     def get_leads_by_cqdid(self,
-                           cqd_id: int = None,
-                           start_row: int = None,
-                           end_row: int = None
+                           cqd_id: int,
+                           start_row: int,
+                           end_row: int
                            ):
         data = {
             'cqd_id': cqd_id,
@@ -20,16 +20,16 @@ class Downloads(object):
         return utils.make_post_request(url, data, self.headers)
 
     def get_leads_by_cqdid_long(self,
-                                cqd_id: int = None,
-                                clf_id: int = None,
-                                start_row: int = None,
-                                end_row: int = None
+                                cqd_id: int,
+                                start_row: int,
+                                end_row: int,
+                                clf_id: int = None
                                 ):
         data = {
             'cqd_id': cqd_id,
-            'clf_id': clf_id,
             'startrow': start_row,
-            'endrow': end_row
+            'endrow': end_row,
+            'clf_id': clf_id
         }
         url = f'https://{self.server_id}.leadperfection.com/api/Downloads/GetLeadsByCQDIDLong'
         return utils.make_post_request(url, data, self.headers)

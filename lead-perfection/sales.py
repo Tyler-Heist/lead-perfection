@@ -24,7 +24,7 @@ class Sales(object):
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddJobImages'
         return utils.make_post_request(url, data, self.headers)
 
-    def add_notes(self, rec_type: str = None, rec_id: int = None, notes: str = None):
+    def add_notes(self, rec_type: str, rec_id: int, notes: str):
         # Record Type: cst=Prospect, ils=Issued Lead, job=Job Detail
         data = {'rectype': rec_type, 'recid': rec_id, 'notes': notes}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddNotes'
@@ -32,10 +32,10 @@ class Sales(object):
 
     def add_sales_job_commission(
             self,
-            job_id: int = None,
-            sales_rep_id: int = None,
-            commission_pay_amt: float = None,
-            commission_type: int = None,
+            job_id: int,
+            sales_rep_id: int,
+            commission_pay_amt: float,
+            commission_type: int,
             comments: str = None
     ):
         data = {
@@ -50,11 +50,11 @@ class Sales(object):
 
     def add_sales_job_payment(
             self,
-            job_id: int = None,
-            payment_date: str = None,
-            payment_amt: float = None,
-            payment_type_id: str = None,
-            payment_method_id: str = None,
+            job_id: int,
+            payment_date: str,
+            payment_amt: float,
+            payment_type_id: str,
+            payment_method_id: str,
             payment_notes: str = None,
             ar_batch_num: int = 0,
             inc_batch_num: int = 0
@@ -74,19 +74,19 @@ class Sales(object):
 
     def add_sales_job_cost(
             self,
-            job_id: int = None,
-            mat_id: str = None,
-            qty: int = None,
-            cost: float = None,
-            price: float = None,
-            comm_flag: bool = False,
-            override_flag: bool = False,
-            invoice_date: str = None,
-            invoice_number: str = None,
-            comments: str = None,
-            entered_by: int = None,
-            est_qty: int = None,
-            est_cost: float = None
+            job_id: int,
+            mat_id: str,
+            qty: int,
+            cost: float,
+            price: float,
+            comm_flag: bool,
+            invoice_date: str,
+            invoice_number: str,
+            comments: str,
+            entered_by: int,
+            est_qty: int,
+            est_cost: float,
+            override_flag: bool = True,
     ):
         data = {
             'job_id': job_id,
@@ -95,13 +95,13 @@ class Sales(object):
             'cost': cost,
             'price': price,
             'commFlag': comm_flag,
-            'overrideFlag': override_flag,
             'invoiceDate': invoice_date,
             'invoiceNumber': invoice_number,
             'comments': comments,
             'enteredBy': entered_by,
             'estQty': est_qty,
             'estCost': est_cost,
+            'overrideFlag': override_flag
         }
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddSalesJobCost'
         return utils.make_post_request(url, data, self.headers)
@@ -124,7 +124,7 @@ class Sales(object):
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/AddSalesmanImages'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_links(self, rec_type: str = None, rec_id: int = None):
+    def get_links(self, rec_type: str, rec_id: int):
         data = {'rectype': rec_type, 'recid': rec_id}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetLinks'
         return utils.make_post_request(url, data, self.headers)
@@ -144,27 +144,27 @@ class Sales(object):
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesApptCal'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_appt_day_list(self, appt_date: str = None):
+    def get_sales_appt_day_list(self, appt_date: str):
         data = {'apptdate': appt_date}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesApptDayList'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_appt_detail(self, appt_date: str = None, issued_lead_id: int = None):
+    def get_sales_appt_detail(self, appt_date: str, issued_lead_id: int):
         data = {'apptdate': appt_date, 'issuedleadid': issued_lead_id}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesApptDetail'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_appt_detail_date_range(self, appt_dates: str = None, appt_date_e: str = None):
+    def get_sales_appt_detail_date_range(self, appt_dates: str, appt_date_e: str):
         data = {'apptdates': appt_dates, 'apptdatee': appt_date_e}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesApptDetailDateRange'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_appt_list(self, appt_date_start: str = None, appt_date_end: str = None):
+    def get_sales_appt_list(self, appt_date_start: str, appt_date_end: str):
         data = {'apptdatestart': appt_date_start, 'apptdateend': appt_date_end}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesApptList'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_job_detail(self, job_id: int = None):
+    def get_sales_job_detail(self, job_id: int):
         data = {'jobid': job_id}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesJobDetail'
         return utils.make_post_request(url, data, self.headers)
@@ -174,12 +174,12 @@ class Sales(object):
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesOpen'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_sched_cal(self, sched_date: str = None):
+    def get_sales_sched_cal(self, sched_date: str):
         data = {'scheddate': sched_date}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesSchedCal'
         return utils.make_post_request(url, data, self.headers)
 
-    def get_sales_sched_detail(self, sched_date: str = None):
+    def get_sales_sched_detail(self, sched_date: str):
         data = {'scheddate': sched_date}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/GetSalesSchedDetail'
         return utils.make_post_request(url, data, self.headers)
@@ -195,44 +195,44 @@ class Sales(object):
         return utils.make_post_request(url, data, self.headers)
 
     def update_sales_appt_detail(self,
-                                 issued_lead_id: int = None,
-                                 disposition: str = None,
+                                 issued_lead_id: int,
+                                 disposition: str,
                                  product_id1: str = None,
                                  product_id2: str = None,
                                  product_id3: str = None,
                                  product_id4: str = None,
                                  product_id5: str = None,
-                                 gsa1: int = None,
-                                 gsa2: int = None,
-                                 gsa3: int = None,
-                                 gsa4: int = None,
-                                 gsa5: int = None,
+                                 gsa1: float = None,
+                                 gsa2: float = None,
+                                 gsa3: float = None,
+                                 gsa4: float = None,
+                                 gsa5: float = None,
                                  pres_notes: str = None,
-                                 user11: int = None,
-                                 user12: int = None,
-                                 user13: int = None,
-                                 user14: int = None,
-                                 user15: int = None,
-                                 user21: int = None,
-                                 user22: int = None,
-                                 user23: int = None,
-                                 user24: int = None,
-                                 user25: int = None,
-                                 user31: int = None,
-                                 user32: int = None,
-                                 user33: int = None,
-                                 user34: int = None,
-                                 user35: int = None,
-                                 user41: int = None,
-                                 user42: int = None,
-                                 user43: int = None,
-                                 user44: int = None,
-                                 user45: int = None,
-                                 user51: int = None,
-                                 user52: int = None,
-                                 user53: int = None,
-                                 user54: int = None,
-                                 user55: int = None
+                                 user11: float = None,
+                                 user12: float = None,
+                                 user13: float = None,
+                                 user14: float = None,
+                                 user15: float = None,
+                                 user21: float = None,
+                                 user22: float = None,
+                                 user23: float = None,
+                                 user24: float = None,
+                                 user25: float = None,
+                                 user31: float = None,
+                                 user32: float = None,
+                                 user33: float = None,
+                                 user34: float = None,
+                                 user35: float = None,
+                                 user41: float = None,
+                                 user42: float = None,
+                                 user43: float = None,
+                                 user44: float = None,
+                                 user45: float = None,
+                                 user51: float = None,
+                                 user52: float = None,
+                                 user53: float = None,
+                                 user54: float = None,
+                                 user55: float = None
                                  ):
         data = {
             'issuedleadid': issued_lead_id,
@@ -278,44 +278,44 @@ class Sales(object):
         return utils.make_post_request(url, data, self.headers)
 
     def update_sales_appt_detail2(self,
-                                  issued_lead_id: int = None,
-                                  disposition: str = None,
+                                  issued_lead_id: int,
+                                  disposition: str,
                                   product_id1: str = None,
                                   product_id2: str = None,
                                   product_id3: str = None,
                                   product_id4: str = None,
                                   product_id5: str = None,
-                                  gsa1: int = None,
-                                  gsa2: int = None,
-                                  gsa3: int = None,
-                                  gsa4: int = None,
-                                  gsa5: int = None,
+                                  gsa1: float = None,
+                                  gsa2: float = None,
+                                  gsa3: float = None,
+                                  gsa4: float = None,
+                                  gsa5: float = None,
                                   pres_notes: str = None,
-                                  user11: int = None,
-                                  user12: int = None,
-                                  user13: int = None,
-                                  user14: int = None,
-                                  user15: int = None,
-                                  user21: int = None,
-                                  user22: int = None,
-                                  user23: int = None,
-                                  user24: int = None,
-                                  user25: int = None,
-                                  user31: int = None,
-                                  user32: int = None,
-                                  user33: int = None,
-                                  user34: int = None,
-                                  user35: int = None,
-                                  user41: int = None,
-                                  user42: int = None,
-                                  user43: int = None,
-                                  user44: int = None,
-                                  user45: int = None,
-                                  user51: int = None,
-                                  user52: int = None,
-                                  user53: int = None,
-                                  user54: int = None,
-                                  user55: int = None,
+                                  user11: float = None,
+                                  user12: float = None,
+                                  user13: float = None,
+                                  user14: float = None,
+                                  user15: float = None,
+                                  user21: float = None,
+                                  user22: float = None,
+                                  user23: float = None,
+                                  user24: float = None,
+                                  user25: float = None,
+                                  user31: float = None,
+                                  user32: float = None,
+                                  user33: float = None,
+                                  user34: float = None,
+                                  user35: float = None,
+                                  user41: float = None,
+                                  user42: float = None,
+                                  user43: float = None,
+                                  user44: float = None,
+                                  user45: float = None,
+                                  user51: float = None,
+                                  user52: float = None,
+                                  user53: float = None,
+                                  user54: float = None,
+                                  user55: float = None,
                                   followup_date: str = None,
                                   followup_time: str = None
                                   ):
@@ -372,37 +372,37 @@ class Sales(object):
                                   product_id3: str = None,
                                   product_id4: str = None,
                                   product_id5: str = None,
-                                  gsa1: int = None,
-                                  gsa2: int = None,
-                                  gsa3: int = None,
-                                  gsa4: int = None,
-                                  gsa5: int = None,
+                                  gsa1: float = None,
+                                  gsa2: float = None,
+                                  gsa3: float = None,
+                                  gsa4: float = None,
+                                  gsa5: float = None,
                                   pres_notes: str = None,
-                                  user11: int = None,
-                                  user12: int = None,
-                                  user13: int = None,
-                                  user14: int = None,
-                                  user15: int = None,
-                                  user21: int = None,
-                                  user22: int = None,
-                                  user23: int = None,
-                                  user24: int = None,
-                                  user25: int = None,
-                                  user31: int = None,
-                                  user32: int = None,
-                                  user33: int = None,
-                                  user34: int = None,
-                                  user35: int = None,
-                                  user41: int = None,
-                                  user42: int = None,
-                                  user43: int = None,
-                                  user44: int = None,
-                                  user45: int = None,
-                                  user51: int = None,
-                                  user52: int = None,
-                                  user53: int = None,
-                                  user54: int = None,
-                                  user55: int = None,
+                                  user11: float = None,
+                                  user12: float = None,
+                                  user13: float = None,
+                                  user14: float = None,
+                                  user15: float = None,
+                                  user21: float = None,
+                                  user22: float = None,
+                                  user23: float = None,
+                                  user24: float = None,
+                                  user25: float = None,
+                                  user31: float = None,
+                                  user32: float = None,
+                                  user33: float = None,
+                                  user34: float = None,
+                                  user35: float = None,
+                                  user41: float = None,
+                                  user42: float = None,
+                                  user43: float = None,
+                                  user44: float = None,
+                                  user45: float = None,
+                                  user51: float = None,
+                                  user52: float = None,
+                                  user53: float = None,
+                                  user54: float = None,
+                                  user55: float = None,
                                   followup_date: str = None,
                                   followup_time: str = None,
                                   slt_id: str = None,
@@ -466,20 +466,20 @@ class Sales(object):
         return utils.make_post_request(url, data, self.headers)
 
     def update_sales_job_cost(self,
-                              job_cost_id: int = None,
-                              job_id: int = None,
-                              mat_id: int = None,
-                              qty: int = None,
-                              cost: int = None,
-                              price: int = None,
-                              comm_flag: bool = None,
-                              override_flag: bool = None,
-                              invoice_date: str = None,
-                              invoice_number: str = None,
-                              comments: str = None,
-                              updated_by: int = None,
-                              est_qty: int = None,
-                              est_cost: int = None
+                              job_cost_id: int,
+                              job_id: int,
+                              mat_id: int,
+                              qty: float,
+                              cost: float,
+                              price: float,
+                              comm_flag: bool,
+                              override_flag: bool,
+                              invoice_date: str,
+                              invoice_number: str,
+                              comments: str,
+                              updated_by: int,
+                              est_qty: float,
+                              est_cost: float
                               ):
         data = {
             'id': job_cost_id,
@@ -502,31 +502,31 @@ class Sales(object):
         return utils.make_post_request(url, data, self.headers)
 
     def update_sales_job_detail(self,
-                                job_id: int = None,
+                                job_id: int,
+                                cmt_id: str,
+                                commission: float,
+                                tax_rate: float,
+                                gross: float,
                                 pws_id: str = None,
-                                cmt_id: str = None,
-                                commission: int = None,
-                                tax_rate: int = None,
-                                gross: int = None
                                 ):
         data = {
             'jobid': job_id,
-            'pwsid': pws_id,
             'cmtid': cmt_id,
             'commission': commission,
             'taxrate': tax_rate,
-            'gross': gross
+            'gross': gross,
+            'pwsid': pws_id
         }
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/UpdateSalesJobDetail'
         return utils.make_post_request(url, data, self.headers)
 
-    def update_sales_ack(self, issued_lead_id: int = None):
+    def update_sales_ack(self, issued_lead_id: int):
         data = {'issuedleadid': issued_lead_id}
         url = f'https://{self.server_id}.leadperfection.com/api/SalesApi/UpdateSalesAck'
         return utils.make_post_request(url, data, self.headers)
 
     def update_sales_sched_detail(self,
-                                  sched_date: str = None,
+                                  sched_date: str,
                                   tms1: bool = None,
                                   tms2: bool = None,
                                   tms3: bool = None,

@@ -11,14 +11,14 @@ class Canvass(object):
         url = f'https://{self.server_id}.leadperfection.com/api/Canvass/GetCanvassProd'
         return utils.make_post_request(url, data, self.headers)
 
-    def add_canvass_points(self,
-                           house_number: str = None,
-                           street_name: str = None,
-                           city: str = None,
-                           state: str = None,
-                           zip_code: str = None,
-                           longitude: int = None,
-                           latitude: int = None,
+    def add_canvass_pofloats(self,
+                           house_number: str,
+                           street_name: str,
+                           city: str,
+                           state: str,
+                           zip_code: str,
+                           longitude: float,
+                           latitude: float,
                            first_name: str = None,
                            last_name: str = None,
                            first_name2: str = None,
@@ -51,17 +51,17 @@ class Canvass(object):
             'email': email,
             'waiverexists': waiver_exists
         }
-        url = f'https://{self.server_id}.leadperfection.com/api/Canvass/AddCanvassPoints'
+        url = f'https://{self.server_id}.leadperfection.com/api/Canvass/AddCanvassPofloats'
         return utils.make_post_request(url, data, self.headers)
 
-    def add_canvass_points2(self,
-                            house_number: str = None,
-                            street_name: str = None,
-                            city: str = None,
-                            state: str = None,
-                            zip_code: str = None,
-                            longitude: int = None,
-                            latitude: int = None,
+    def add_canvass_pofloats2(self,
+                            house_number: str,
+                            street_name: str,
+                            city: str,
+                            state: str,
+                            zip_code: str,
+                            longitude: float,
+                            latitude: float,
                             first_name: str = None,
                             last_name: str = None,
                             first_name2: str = None,
@@ -102,13 +102,13 @@ class Canvass(object):
             'email': email,
             'waiverexists': waiver_exists
         }
-        url = f'https://{self.server_id}.leadperfection.com/api/Canvass/AddCanvassPoints2'
+        url = f'https://{self.server_id}.leadperfection.com/api/Canvass/AddCanvassPofloats2'
         return utils.make_post_request(url, data, self.headers)
 
     def get_canvassed_info(self,
-                           employee_type: str = None,
-                           longitude: int = None,
-                           latitude: int = None
+                           employee_type: str,
+                           longitude: float,
+                           latitude: float
                            ):
         data = {'type': employee_type, 'longitude': longitude, 'latitude': latitude}
         url = f'https://{self.server_id}.leadperfection.com/api/Canvass/GetCanvassedInfo'
