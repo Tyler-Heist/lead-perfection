@@ -1,10 +1,6 @@
-import importlib
+import lead_perfection as lp
 
-
-LP = importlib.import_module('lead-perfection.client')
-menu = importlib.import_module('lead-perfection.menu')
-
-client = LP.Client('apitest', 'demo3', 'demo3api', 'LP3api123!', '4E405C4F-6EAA-4A7F-A0AE-5B955B1FD2F1')
+client = lp.client.Client('apitest', 'demo3', 'demo3api', 'LP3api123!', '4E405C4F-6EAA-4A7F-A0AE-5B955B1FD2F1')
 auth_data = client.authenticate()
 access_token = auth_data['access_token']
 print(access_token)
@@ -15,7 +11,7 @@ print(access_token)
 # with open('auth_data.json', 'w') as outfile:
 #     outfile.write(json.dumps(auth_data, indent=4))
 
-lp_menu = menu.Menu(server_id='apitest', access_token=access_token)
+lp_menu = lp.menu.Menu(server_id='apitest', access_token=access_token)
 result = lp_menu.get_menu()
 print(result)
 

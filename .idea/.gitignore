@@ -1,3 +1,8 @@
 # Default ignored files
 /shelf/
 /workspace.xml
+
+../build
+../dist
+../lead_perfection.egg-info
+../*.toml
