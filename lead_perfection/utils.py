@@ -1,6 +1,5 @@
 import json
 import requests
-from requests.exceptions import ConnectionError, Timeout, HTTPError, RequestException
 
 
 def headers(access_token: str = None):
@@ -11,35 +10,26 @@ def headers(access_token: str = None):
     }
 
 
-def make_post_request(url, data, request_headers):
+def make_post_request(url: str, data: dict, request_headers: dict) -> dict:
     try:
         response = requests.post(url=url, data=data, headers=request_headers)
         response.raise_for_status()
-        return response.json()
-    except ConnectionError as ce:
-        return f'Connection Error: {ce}'
-    except Timeout as te:
-        return f'Request Timeout: {te}'
-    except HTTPError as he:
-        return f'HTTP Error: {he}'
-    except RequestException as re:
-        return f'Request Exception: {re}'
-    except json.JSONDecodeError as je:
-        return f'JSON Decode Error: {je}'
+        try:
+            return response.json()
+        except json.decoder.JSONDecodeError as je:
+            raise RuntimeError(f"Failed to decode JSON response: {je}") from je
+    except requests.exceptions.RequestException:
+        raise
 
 
-def make_get_request(url, data, request_headers):
+def make_get_request(url: str, params: dict, request_headers: dict) -> dict:
     try:
-        response = requests.get(url=url, data=data, headers=request_headers)
+        response = requests.get(url=url, params=params, headers=request_headers)
         response.raise_for_status()
-        return response.json()
-    except ConnectionError as ce:
-        return f'Connection Error: {ce}'
-    except Timeout as te:
-        return f'Request Timeout: {te}'
-    except HTTPError as he:
-        return f'HTTP Error: {he}'
-    except RequestException as re:
-        return f'Request Exception: {re}'
-    except json.JSONDecodeError as je:
-        return f'JSON Decode Error: {je}'
+        try:
+            return response.json()
+        except json.decoder.JSONDecodeError as je:
+            raise RuntimeError(f"Failed to decode JSON response: {je}") from je
+    except requests.exceptions.RequestException:
+        raise
+

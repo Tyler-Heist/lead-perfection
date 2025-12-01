@@ -321,7 +321,7 @@ class Leads(object):
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/AddSpectrumLead'
         return utils.make_post_request(url, data, self.headers)
 
-    # Method is floatended only for the vendor Spectrum.
+    # Method is intended only for the vendor Spectrum.
     def get_spectrum_results(self, s_date: str = None, e_date: str = None):
         data = {'sdate': s_date, 'edate': e_date}
         url = f'https://{self.server_id}.leadperfection.com/api/Leads/GetSpectrumResults'

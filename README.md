@@ -35,9 +35,15 @@ print("Access Token:", access_token)
 
 # Access the Menu endpoint using the obtained token
 lp_menu = lp.menu.Menu(server_id='apitest', access_token=access_token)
-result = lp_menu.get_menu()
+menu_result = lp_menu.get_menu()
 
-print("Menu Result:", result)
+print("Menu Result:", menu_result)
+
+# Access the Leads endpoint using the obtained token
+lp_leads = lp.leads.Leads(server_id='apitest', access_token=access_token)
+leads_result = lp_leads.leads_login_message()
+
+print("Leads Login Message Result:", leads_result)
 ```
 
 ## Project Structure

@@ -7,6 +7,6 @@ class Menu(object):
         self.headers = self.headers = utils.headers(access_token=access_token)
 
     def get_menu(self):
-        data = None
+        params = {}
         url = f'https://{self.server_id}.leadperfection.com/api/Menu/GetMenu'
-        return utils.make_get_request(url, data, self.headers)
+        return utils.make_get_request(url, params, self.headers)
